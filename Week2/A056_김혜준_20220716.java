@@ -1,16 +1,19 @@
-public int[] nextGreaterElementBrute(int[] nums1, int[] nums2) {
-	int[] ans = new int[nums1.length];
-
-	for(int i = 0; i < nums1.length; i++) {
-		int greaterIdx = -1, j = nums2.length - 1;
-		while(j >= 0 && nums2[j] != nums1[i]) {
-			if(nums2[j] > nums1[i]){
-				greaterIdx = nums2[j];
-			}
-			j--;
-		}
-		ans[i] = greaterIdx;
-	}
-
-	return ans;
+public class Solution {
+    public int[] nextGreaterElement(int[] findNums, int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        Stack<Integer> stack = new Stack<>();
+        
+        for (int num : nums) {
+            while (!stack.isEmpty() && stack.peek() < num) {
+                map.put(stack.pop(), num);
+            }
+            stack.push(num);
+        }
+        
+        int[] res = new int[findNums.length];
+        for (int i = 0; i < findNums.length; i++) {
+            res[i] = map.getOrDefault(findNums[i], -1);
+        }
+        return res;
+    }
 }
