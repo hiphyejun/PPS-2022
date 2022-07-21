@@ -1,0 +1,20 @@
+/*
+반복되는 걸 지우고 남을걸 출력하라.
+한번 돌면서 지우고 한번 더도는 반복문, 더이상 겹치는게 없을 때까지 
+체크는 charAt해서 비교하는게 제일 무난함.
+*/
+
+
+class Solution {
+    public String removeDuplicates(String s) {
+        StringBuilder sb = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            if (sb.length() > 0 && sb.charAt(sb.length() - 1) == c) {
+                sb.deleteCharAt(sb.length() - 1);
+            } else {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
+    }
+}

@@ -1,0 +1,16 @@
+// 문제 풀다가 메소드 하나 쓰면 한줄만에 풀리는게 얼탱이 없어서 이 문제로 선정.
+/* Parameter: This method does not accepts any parameter.
+
+Return Value: The function returns the day of the year which is in range [1, 365/366] depending on leap year or not.
+
+Below programs illustrate the getDayOfYear() method of LocalDate in Java
+*/
+
+import java.time.LocalDate;
+
+class Solution {
+
+	public int dayOfYear(String date) {
+		return LocalDate.parse(date).getDayOfYear();
+	}
+}
